@@ -11,7 +11,7 @@ export function Shopp() {
     const [totalPrice, setTotalPrice] = useState(0);
 
     function GetCategories() {
-        axios.get("http://fakestoreapi.com/products/categories")
+        axios.get("https://fakestoreapi.com/products/categories")
             .then(response => {
                 response.data.unshift("all");
                 setCategories(response.data);
@@ -28,7 +28,7 @@ export function Shopp() {
     useEffect(() => {
         GetCategories();
 
-        GetProducts("http://fakestoreapi.com/products");
+        GetProducts("https://fakestoreapi.com/products");
 
         GetCartCount();
         GetTotalPrice();
@@ -36,14 +36,14 @@ export function Shopp() {
 
     function handleCategoryChange(e) {
         if (e.target.value === "all") {
-            GetProducts("http://fakestoreapi.com/products");
+            GetProducts("https://fakestoreapi.com/products");
         } else {
-            GetProducts(`http://fakestoreapi.com/products/category/${e.target.value}`);
+            GetProducts(`https://fakestoreapi.com/products/category/${e.target.value}`);
         }
     }
 
     function handleAddToCartClick(e) {
-        axios.get(`http://fakestoreapi.com/products/${e.target.value}`)
+        axios.get(`https://fakestoreapi.com/products/${e.target.value}`)
             .then(response => {
                 cartItems.push(response.data);
                 alert(`${response.data.title}\nadded to Cart`);
