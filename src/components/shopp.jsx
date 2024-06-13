@@ -30,9 +30,9 @@ export function Shopp() {
 
         GetProducts("http://fakestoreapi.com/products");
 
-        // GetCartCount();
-        // GetToatlPrice();
-    },[cartItems])
+        GetCartCount();
+        GetTotalPrice();
+    },[])
 
     function handleCategoryChange(e) {
         if (e.target.value === "all") {
@@ -48,7 +48,7 @@ export function Shopp() {
                 cartItems.push(response.data);
                 alert(`${response.data.title}\nadded to Cart`);
                 GetCartCount();
-                GetToatlPrice();
+                GetTotalPrice();
             })
     }
 
@@ -64,10 +64,10 @@ export function Shopp() {
         alert(e.currentTarget.value);
         cartItems.splice(e.currentTarget.value, 1);
         GetCartCount();
-        GetToatlPrice();
+        GetTotalPrice();
     }
 
-    function GetToatlPrice() {
+    function GetTotalPrice() {
         const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
         setTotalPrice(totalPrice);
     }
